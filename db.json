@@ -1,0 +1,58 @@
+{
+  "donors": [
+    {
+      "id": 1,
+      "fullName": "Ali Khan",
+      "cnic": "42101-1234567-1",
+      "bloodGroup": "O+",
+      "city": "Karachi",
+      "contactNumber": "03001234567",
+      "availability": true,
+      "lastDonationDate": "2024-11-10"
+    },
+    {
+      "id": 2,
+      "fullName": "Ahmed Raza",
+      "cnic": "35202-9876543-2",
+      "bloodGroup": "B-",
+      "city": "Lahore",
+      "contactNumber": "03111234567",
+      "availability": true,
+      "lastDonationDate": "2024-09-05"
+    },
+    {
+      "id": 3,
+      "fullName": "Sara Noor",
+      "cnic": "61101-5554443-3",
+      "bloodGroup": "A+",
+      "city": "Islamabad",
+      "contactNumber": "03221234567",
+      "availability": false,
+      "lastDonationDate": "2025-01-20"
+    }
+  ],
+  "requests": [
+    {
+      "id": 1,
+      "patientName": "Hassan Mirza",
+      "bloodGroup": "O-",
+      "hospitalName": "City Hospital",
+      "city": "Karachi",
+      "contactNumber": "03331234567",
+      "fulfilled": false,
+      "postedBy": "user1",
+      "createdAt": "2025-07-01T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "patientName": "Fatima Zahra",
+      "bloodGroup": "B+",
+      "hospitalName": "Life Care Hospital",
+      "city": "Lahore",
+      "contactNumber": "03441234567",
+      "fulfilled": true,
+      "postedBy": "user2",
+      "createdAt": "2025-06-28T08:30:00.000Z"
+    }
+  ]
+}

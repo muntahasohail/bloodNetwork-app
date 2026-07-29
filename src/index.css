@@ -1,0 +1,624 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+@keyframes ping {
+  0%   { box-shadow: 0 0 0 0 rgba(220,38,38,0.4); }
+  100% { box-shadow: 0 0 0 10px rgba(220,38,38,0); }
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 17px;
+  background: #f8fafc;
+  color: #1a1a2e;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 3.6rem; }
+h2 { font-size: 2.8rem; }
+h3 { font-size: 2.1rem; }
+h4 { font-size: 1.6rem; }
+h5 { font-size: 1.3rem; }
+h6 { font-size: 1.1rem; }
+
+p  { font-size: 1.1rem; }
+
+a  { font-family: 'Nunito', sans-serif; }
+
+button, input, select, textarea {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+}
+
+label { font-size: 0.95rem; font-weight: 600; }
+
+small { font-size: 0.85rem; }
+
+.donate-page {
+  min-height: 100vh;
+  padding: 60px 16px 80px;
+  background: linear-gradient(160deg,#fdfcfb 0%,#fff5f5 50%,#f8f5ff 100%);
+}
+
+.donate-card {
+  max-width: 740px;
+  margin: 0 auto;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 20px 60px rgba(220,38,38,0.12), 0 4px 16px rgba(0,0,0,0.06);
+  overflow: hidden;
+  border: 1px solid #fef2f2;
+}
+
+/* Header Banner */
+.donate-card-header {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 60%, #7f1d1d 100%);
+  padding: 32px 36px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.donate-drop-icon {
+  font-size: 2.6rem;
+  background: rgba(255,255,255,0.18);
+  border-radius: 50%;
+  width: 68px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid rgba(255,255,255,0.25);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.donate-title {
+  color: #fff;
+  font-weight: 800;
+  font-size: 2rem;
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+
+.donate-subtitle {
+  color: rgba(255,255,255,0.78);
+  font-size: 1rem;
+  margin: 4px 0 0;
+  letter-spacing: 0.01em;
+}
+
+/* Form Body */
+.donate-form {
+  padding: 36px;
+}
+
+.form-section-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #dc2626;
+  margin-bottom: 14px;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 24px;
+}
+
+@media (max-width: 560px) {
+  .form-grid-2 { grid-template-columns: 1fr; }
+  .donate-form { padding: 22px; }
+  .donate-card-header { padding: 24px 22px; }
+}
+
+.donate-form .form-label {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #374151;
+  letter-spacing: 0.01em;
+}
+
+.required { color: #dc2626; }
+
+.donate-form .form-control,
+.donate-form .form-select,
+.donate-form textarea {
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  background: #fafafa;
+}
+
+.donate-form .form-control:focus,
+.donate-form .form-select:focus,
+.donate-form textarea:focus {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220,38,38,0.1);
+  outline: none;
+  background: #fff;
+}
+
+/* Divider */
+.form-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 12px 0 22px;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.form-divider::before,
+.form-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg,transparent,#e2e8f0,transparent);
+}
+
+/* Availability Toggle */
+.availability-row {
+  display: flex;
+  margin-top: 18px;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg,#fef2f2,#fff5f5);
+  border: 1.5px solid #fecaca;
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+
+.avail-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1e293b;
+  margin: 0;
+}
+
+.avail-sub {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 3px 0 0;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: #d1d5db;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.toggle-slider::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 3px;
+  top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.25s cubic-bezier(.34,1.56,.64,1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.toggle-switch input:checked + .toggle-slider { background: linear-gradient(135deg,#dc2626,#b91c1c); }
+.toggle-switch input:checked + .toggle-slider::before { transform: translateX(22px); }
+
+/* Submit Button */
+.donate-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 20px rgba(220,38,38,0.3);
+  margin-top: 8px;
+}
+
+.donate-btn:hover {
+  opacity: 0.93;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(220,38,38,0.35);
+}
+
+.donate-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Donor Search Page ─────────────────────────────── */
+.donor-filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .donor-filters { grid-template-columns: 1fr; }
+}
+
+.donor-filters .form-control,
+.donor-filters .form-select {
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.donor-filters .form-control:focus,
+.donor-filters .form-select:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.12);
+  outline: none;
+}
+
+.donor-results-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+.clear-filters-btn {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.clear-filters-btn:hover { text-decoration: underline; }
+
+/* Donor Grid */
+.donor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* Donor Card */
+.donor-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  background: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.donor-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.donor-card-top {
+  padding: 18px 16px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.donor-blood-badge {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+  border-radius: 8px;
+  padding: 4px 12px;
+  letter-spacing: 0.04em;
+}
+
+.donor-avail-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.avail-yes {
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+}
+
+.avail-no {
+  background: rgba(0,0,0,0.2);
+  color: rgba(255,255,255,0.75);
+}
+
+.donor-card-body {
+  padding: 16px;
+}
+
+.donor-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 10px;
+}
+
+.donor-info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #4b5563;
+  margin-bottom: 6px;
+}
+
+.donor-cnic {
+  color: #9ca3af;
+  font-size: 0.8rem;
+  font-family: monospace;
+}
+
+/* Empty State */
+.donor-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #9ca3af;
+}
+
+.donor-empty p:first-child { font-size: 3rem; margin-bottom: 8px; }
+.donor-empty p:last-child  { font-size: 1rem; }
+
+/* ── Sticky Footer Layout ──────────────────────────── */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#root > *:not(nav):not(footer) {
+  flex: 1;
+}
+
+/* ── Urgent Request Page ───────────────────────────── */
+.req-form-wrapper {
+  margin-bottom: 32px;
+}
+
+.req-post-btn {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.req-post-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+.req-form-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(220,38,38,0.12);
+  overflow: hidden;
+}
+
+.req-form-header {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.req-form-header h5 { margin: 0; font-weight: 700; font-size: 1rem; }
+
+.req-close-btn {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.req-form-card form { padding: 24px; }
+
+.req-form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.req-cancel-btn {
+  background: #f3f4f6;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.req-submit-btn {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.req-submit-btn:hover { opacity: 0.9; }
+
+/* Section Labels */
+.req-section-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #dc2626;
+  margin: 24px 0 12px;
+}
+
+.req-section-fulfilled { color: #6b7280; }
+
+/* Request Grid */
+.req-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* Request Card */
+.req-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.req-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.req-card-fulfilled {
+  opacity: 0.65;
+  box-shadow: none;
+}
+
+.req-card-fulfilled:hover { transform: none; }
+
+.req-fulfilled-ribbon {
+  position: absolute;
+  top: 10px;
+  right: -22px;
+  background: #16a34a;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 28px;
+  transform: rotate(35deg);
+  letter-spacing: 0.05em;
+}
+
+.req-card-top {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.req-blood-badge {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+  border-radius: 8px;
+  padding: 4px 12px;
+}
+
+.req-urgency-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.req-card-body { padding: 16px; }
+
+.req-patient-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 10px;
+}
+
+.req-info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #4b5563;
+  margin-bottom: 6px;
+}
+
+.req-date {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin: 8px 0 10px;
+}
+
+.req-fulfill-btn {
+  width: 100%;
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  color: #16a34a;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.req-fulfill-btn:hover { background: #dcfce7; }
+
+/* Empty State */
+.req-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #9ca3af;
+}
+
+.req-empty p:first-child { font-size: 3rem; margin-bottom: 8px; }
