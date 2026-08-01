@@ -101,6 +101,11 @@ export default function Navbar() {
           background: #fef2f2;
           color: #b91c1c;
         }
+        @media (max-width: 768px) {
+          .nav-link-row { display: none !important; }
+          .nav-auth-row { display: none !important; }
+          .nav-hamburger { display: block !important; }
+        }
       `}</style>
 
       <nav style={s.nav}>
@@ -116,7 +121,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop links */}
-          <div style={s.linkRow}>
+          <div style={s.linkRow} className="nav-link-row">
             {links.map(({ label, to }) => (
               <Link
                 key={label}
@@ -130,13 +135,13 @@ export default function Navbar() {
           </div>
 
           {/* Auth buttons */}
-          <div style={s.authRow}>
+          <div style={s.authRow} className="nav-auth-row">
             <Link to="/login"    className="nav-btn-login">Login</Link>
             <Link to="/register" className="nav-btn-register">Register</Link>
           </div>
 
           {/* Hamburger */}
-          <button style={s.hamburger} onClick={() => setMenuOpen((p) => !p)} aria-label="menu">
+          <button style={s.hamburger} className="nav-hamburger" onClick={() => setMenuOpen((p) => !p)} aria-label="menu">
             {menuOpen ? "✕" : "☰"}
           </button>
         </div>
