@@ -62,8 +62,9 @@ export default function About() {
 const s = {
   section: {
     background: 'linear-gradient(160deg, #fff5f5 0%, #ffffff 60%, #fef2f2 100%)',
-    padding: '80px 24px',
+    padding: '40px 24px 60px',
     textAlign: 'center',
+    marginTop: '-6px',
   },
   tagWrap: {
     marginBottom: 16,

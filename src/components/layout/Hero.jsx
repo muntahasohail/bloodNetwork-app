@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import heroImg from "../../assets/images/image 7.jpg";
+import heroImg from "../../assets/images/img 6.jpg";
 
 export default function Hero() {
   const { user } = useSelector((state) => state.auth);
@@ -35,8 +35,8 @@ export default function Hero() {
           display: inline-flex;
           align-items: center;
           gap: 2px;
-          background: rgba(255,255,255,0.15);
-          border: 1.5px solid rgba(255,255,255,0.4);
+          background: rgba(20,0,0,0.65);
+          border: 1.5px solid rgba(255, 100, 100, 0.5);
           color: #fff;
           border-radius: 999px;
           padding: 9px 22px;
@@ -70,25 +70,27 @@ export default function Hero() {
           animation: fadeUp 0.6s 0.1s ease both;
           letter-spacing: -0.02em;
           font-family: initial;
-          text-shadow: 0 4px 24px rgba(0,0,0,0.5);
+          text-shadow: 0 4px 32px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.8);
         }
         .hero-heading span {
-          background: linear-gradient(90deg, #fca5a5, #fff, #fca5a5);
+          background: linear-gradient(90deg, #ff4444, #ff8080, #ff4444);
           background-size: 400px 100%;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
           animation: shimmer 2.5s linear infinite;
+          filter: drop-shadow(0 2px 8px rgba(220,38,38,0.6));
         }
         .hero-sub {
-          font-size: 1.55rem;
-          color: rgba(255,255,255,0.92);
+          font-size: 1.45rem;
+          color: rgba(255, 255, 255, 0.95);
           max-width: 620px;
           margin: 22px auto 0;
           line-height: 1.8;
           animation: fadeUp 0.6s 0.2s ease both;
           font-family: fangsong;
-          text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+          text-shadow: 0 2px 16px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.8);
+          font-weight: 500;
         }
         .hero-divider {
           width: 65px;
@@ -103,11 +105,11 @@ export default function Hero() {
           justify-content: center;
           gap: 0;
           flex-wrap: wrap;
-          margin-top: 48px;
+          margin-top: 72px;
           animation: fadeUp 0.6s 0.35s ease both;
-          background: rgba(0,0,0,0.35);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255,255,255,0.15);
+          background: rgba(10,0,0,0.72);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 100, 100, 0.3);
           border-radius: 20px;
           padding: 20px 10px;
           max-width: 680px;
@@ -118,20 +120,21 @@ export default function Hero() {
           flex: 1;
           min-width: 120px;
           padding: 8px 16px;
-          border-right: 1px solid rgba(255,255,255,0.15);
+          border-right: 1px solid rgba(255, 100, 100, 0.25);
         }
         .hero-stat-item:last-child { border-right: none; }
         .hero-stat-val {
           font-size: 1.9rem;
           font-weight: 800;
           display: block;
-          color: #fff;
+          color: #ff6b6b;
           font-family: fangsong;
+          text-shadow: 0 2px 8px rgba(220,38,38,0.4);
         }
         .hero-stat-label {
           font-size: 0.88rem;
           font-weight: 500;
-          color: rgba(255,255,255,0.7);
+          color: rgba(255, 255, 255, 0.8);
           text-transform: uppercase;
           letter-spacing: 0.08em;
           margin-top: 4px;
@@ -176,7 +179,7 @@ export default function Hero() {
           <div className="hero-divider" />
 
           { <p className="hero-sub">
-            Find blood donors instantly during emergencies. Powered by AI and location-based technology — connecting donors and patients across Pakistan in minutes.
+            Connecting Donors, Saving Lives — Powered by AI and location-based technology across Pakistan.
           </p> }
 
           {<div className="hero-stats">
@@ -192,7 +195,7 @@ export default function Hero() {
 
         {/* Bottom curve */}
         <div style={s.curve}>
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 80 }}>
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 60 }}>
             <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#fff5f5" />
           </svg>
         </div>
@@ -210,7 +213,7 @@ const s = {
     justifyContent: "center",
     position: "relative",
     overflow: "hidden",
-    paddingBottom: 10,
+    paddingBottom: 0,
   },
   bgImage: {
     position: "absolute",
@@ -224,16 +227,17 @@ const s = {
   overlay: {
     position: "absolute",
     inset: 0,
-    background: "linear-gradient(to bottom, rgba(0,0,0,0.01) 100%, rgba(0,0,0,0.01) 100%, rgba(100,0,0,0.75) 100%, rgba(30,0,0,0.95) 100%)",
+    background: "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(20,0,0,0.65) 60%, rgba(10,0,0,0.85) 100%)",
     zIndex: 1,
   },
   content: {
     textAlign: "center",
+    color: "#000",
     padding: "0 24px 60px",
     maxWidth: 780,
     position: "absolute",
-    bottom: "16%",
-    left: "35%",
+    bottom: "18%",
+    left: "50%",
     transform: "translateX(-50%)",
     width: "100%",
     zIndex: 2,
