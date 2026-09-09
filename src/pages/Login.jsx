@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../features/auth/authSlice";
-import { BiFontFamily } from "react-icons/bi";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLoading, isError, message } = useSelector((s) => s.auth);
@@ -24,47 +24,92 @@ export default function Login() {
     <>
       <style>{`
         @keyframes fadeUp {
-          from { opacity:0; transform:translateY(20px); }
+          from { opacity:0; transform:translateY(24px); }
           to   { opacity:1; transform:translateY(0); }
         }
+        @keyframes meshMove {
+          0%,100% { transform:translate(0,0) scale(1); }
+          33%      { transform:translate(40px,-30px) scale(1.1); }
+          66%      { transform:translate(-30px,20px) scale(0.95); }
+        }
+        @keyframes meshMove2 {
+          0%,100% { transform:translate(0,0) scale(1); }
+          50%      { transform:translate(-50px,40px) scale(1.15); }
+        }
         @keyframes floatDrop {
-          0%,100% { transform:translateY(0) rotate(0deg); }
-          50%      { transform:translateY(-18px) rotate(8deg); }
+          0%,100% { transform:translateY(0) rotate(0deg); opacity:0.15; }
+          50%      { transform:translateY(-20px) rotate(10deg); opacity:0.25; }
         }
+        @keyframes shimmerLine {
+          0%   { transform:translateX(-100%); }
+          100% { transform:translateX(100%); }
+        }
+        .auth-input-wrap { position:relative; }
         .auth-input {
-          width:100%; padding:14px 16px; border-radius:12px;
-          border:1.5px solid #e5e7eb; font-size:0.95rem;
-          outline:none; transition:border-color 0.2s, box-shadow 0.2s;
-          background:#fafafa; box-sizing:border-box;
+          width:100%; padding:13px 16px; border-radius:12px;
+          border:1.5px solid #e2e8f0; font-size:0.92rem;
+          outline:none; transition:all 0.22s;
+          background:#f8fafc; box-sizing:border-box;
+          color:#0f172a; font-family:inherit;
         }
-        .auth-input:focus { border-color:#dc2626; box-shadow:0 0 0 3px rgba(220,38,38,0.1); background:#fff; }
+        .auth-input:focus {
+          border-color:#dc2626;
+          box-shadow:0 0 0 4px rgba(220,38,38,0.08);
+          background:#fff;
+        }
+        .auth-input::placeholder { color:#94a3b8; }
         .auth-btn {
-          width:100%; padding:15px; border-radius:12px; border:none;
-          background:linear-gradient(135deg,#dc2626,#991b1b);
-          color:#fff; font-size:1rem; font-weight:800; cursor:pointer;
-          box-shadow:0 8px 24px rgba(220,38,38,0.35);
-          transition:transform 0.2s, box-shadow 0.2s, opacity 0.2s;
-          letter-spacing:0.03em;
+          width:100%; padding:14px; border-radius:12px; border:none;
+          background:linear-gradient(135deg,#dc2626 0%,#991b1b 100%);
+          color:#fff; font-size:0.95rem; font-weight:800; cursor:pointer;
+          box-shadow:0 6px 20px rgba(220,38,38,0.35);
+          transition:all 0.22s; letter-spacing:0.04em;
+          position:relative; overflow:hidden;
+          font-family:inherit;
         }
-        .auth-btn:hover:not(:disabled) { transform:translateY(-2px); box-shadow:0 12px 32px rgba(220,38,38,0.4); }
+        .auth-btn::after {
+          content:"";
+          position:absolute; top:0; left:0; right:0; bottom:0;
+          background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent);
+          transform:translateX(-100%);
+          transition:transform 0.5s;
+        }
+        .auth-btn:hover::after { transform:translateX(100%); }
+        .auth-btn:hover:not(:disabled) {
+          transform:translateY(-2px);
+          box-shadow:0 10px 28px rgba(220,38,38,0.45);
+        }
         .auth-btn:disabled { opacity:0.6; cursor:not-allowed; }
+        .pass-toggle {
+          position:absolute; right:14px; top:50%; transform:translateY(-50%);
+          background:none; border:none; cursor:pointer; color:#94a3b8;
+          font-size:0.85rem; padding:0; transition:color 0.2s;
+        }
+        .pass-toggle:hover { color:#dc2626; }
       `}</style>
 
       <div style={s.page}>
         {/* Left panel */}
         <div style={s.left}>
-          <span style={s.floatDrop1}>🩸</span>
-          <span style={s.floatDrop2}>🩸</span>
-          <span style={s.floatDrop3}>❤️</span>
+          {/* Mesh orbs */}
+          <div style={{ position:"absolute", width:500, height:500, borderRadius:"50%", background:"radial-gradient(circle,rgba(255,255,255,0.12),transparent 70%)", top:"-100px", left:"-100px", animation:"meshMove 14s ease-in-out infinite" }} />
+          <div style={{ position:"absolute", width:400, height:400, borderRadius:"50%", background:"radial-gradient(circle,rgba(255,255,255,0.08),transparent 70%)", bottom:"-80px", right:"-80px", animation:"meshMove2 18s ease-in-out infinite" }} />
+          {/* Grid */}
+          <div style={{ position:"absolute", inset:0, backgroundImage:"linear-gradient(rgba(255,255,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.06) 1px,transparent 1px)", backgroundSize:"36px 36px", opacity:0.5 }} />
+
+          <span style={{ position:"absolute", top:"8%", right:"10%", fontSize:"3.5rem", animation:"floatDrop 4s ease-in-out infinite" }}>🩸</span>
+          <span style={{ position:"absolute", bottom:"12%", left:"6%", fontSize:"2.2rem", animation:"floatDrop 5.5s ease-in-out infinite" }}>🩸</span>
+          <span style={{ position:"absolute", top:"52%", right:"18%", fontSize:"1.6rem", animation:"floatDrop 3.5s ease-in-out infinite" }}>❤️</span>
+
           <div style={s.leftContent}>
             <div style={s.brandRow}>
-              <span style={s.brandIcon}>🩸</span>
-              <span style={{color:"#ffff" , fontSize:"2.6rem", fontWeight:900, color:"#fff", letterSpacing:"0.02em" }}>Blood Network</span>
+              <span style={{ fontSize:"2rem" }}>🩸</span>
+              <span style={{ fontSize:"1.6rem", fontWeight:800, color:"#fff", letterSpacing:"-0.02em" }}>Blood Network</span>
             </div>
             <h2 style={s.leftHeading}>Save Lives.<br/>Donate Blood.</h2>
             <p style={s.leftSub}>Pakistan's first AI-powered blood donation network. Connecting donors and patients in minutes.</p>
             <div style={s.leftStats}>
-              {[["10K+","Lives Saved"],["3 min","Avg Match"],["50+","Cities"]].map(([v,l])=>(
+              {[["10K+","Lives Saved"],["3 min","Avg Match"],["50+","Cities"]].map(([v,l]) => (
                 <div key={l} style={s.statItem}>
                   <span style={s.statVal}>{v}</span>
                   <span style={s.statLbl}>{l}</span>
@@ -77,8 +122,13 @@ export default function Login() {
         {/* Right panel */}
         <div style={s.right}>
           <div style={s.card}>
-            <h1 style={s.cardTitle}>Welcome back 👋</h1>
-            <p style={s.cardSub}>Sign in to your BloodNetwork account</p>
+            {/* Top accent line */}
+            <div style={{ height:3, background:"linear-gradient(90deg,#dc2626,#f87171,#dc2626)", borderRadius:"12px 12px 0 0", margin:"-48px -40px 40px", backgroundSize:"200% 100%", animation:"shimmerLine 2s linear infinite" }} />
+
+            <div style={{ marginBottom:28 }}>
+              <h1 style={s.cardTitle}>Welcome back 👋</h1>
+              <p style={s.cardSub}>Sign in to your BloodNetwork account</p>
+            </div>
 
             <form onSubmit={handleLogin} style={s.form}>
               <div style={s.fieldWrap}>
@@ -88,14 +138,26 @@ export default function Login() {
               </div>
               <div style={s.fieldWrap}>
                 <label style={s.label}>Password</label>
-                <input className="auth-input" type="password" placeholder="••••••••"
-                  value={password} onChange={(e) => setPassword(e.target.value)} />
+                <div className="auth-input-wrap">
+                  <input className="auth-input" type={showPass ? "text" : "password"} placeholder="••••••••"
+                    value={password} onChange={(e) => setPassword(e.target.value)}
+                    style={{ paddingRight:44 }} />
+                  <button type="button" className="pass-toggle" onClick={() => setShowPass(p => !p)}>
+                    {showPass ? "Hide" : "Show"}
+                  </button>
+                </div>
               </div>
-              {isError && <p style={s.error}>{message}</p>}
+              {isError && (
+                <div style={s.error}>
+                  <span>⚠️</span> {message}
+                </div>
+              )}
               <button className="auth-btn" type="submit" disabled={isLoading}>
-                {isLoading ? "Signing in..." : "🩸 Sign In"}
+                {isLoading ? "Signing in…" : "🩸 Sign In"}
               </button>
             </form>
+
+            <div style={s.divider}><span>or</span></div>
 
             <p style={s.switchText}>
               Don't have an account?{" "}
@@ -110,28 +172,24 @@ export default function Login() {
 
 const s = {
   page:       { display:"flex", minHeight:"100vh" },
-  left:       { flex:1, background:"linear-gradient(135deg,#dc2626 0%,#7f1d1d 60%,#450a0a 100%)", display:"flex", alignItems:"center", justifyContent:"center", padding:"60px 48px", position:"relative", overflow:"hidden" },
-  leftContent:{ position:"relative", zIndex:1, maxWidth:400 },
-  brandRow:   { display:"flex", alignItems:"center", gap:10, marginBottom:32 },
-  brandIcon:  { fontSize:"2.2rem", filter:"drop-shadow(0 0 10px rgba(255,255,255,0.4))" },
-  brandName:  { fontSize:"2.2rem", fontWeight:900, color:"#fff",fontFamily: "'Bodoni Moda SC', serif", letterSpacing:"0.02em" },
-  leftHeading:{ fontSize:"2.3rem", fontWeight:900, color:"#fff", lineHeight:1.2, margin:"0 0 16px", letterSpacing:"-0.02em" },
-  leftSub:    { fontSize:"1.4rem", color:"rgba(255,255,255,0.75)", lineHeight:1.75, margin:"0 0 36px" },
-  leftStats:  { display:"flex", gap:32 },
-  statItem:   { display:"flex", flexDirection:"column", gap:2 },
-  statVal:    { fontSize:"1.8rem", fontWeight:900, color:"#fff" },
-  statLbl:    { fontSize:"0.95rem", color:"rgba(255,255,255,0.6)", fontWeight:600, textTransform:"uppercase", letterSpacing:"0.07em" },
-  floatDrop1: { position:"absolute", top:"10%", right:"8%", fontSize:"3rem", opacity:0.12, animation:"floatDrop 4s ease-in-out infinite" },
-  floatDrop2: { position:"absolute", bottom:"15%", left:"5%", fontSize:"2rem", opacity:0.1, animation:"floatDrop 5s ease-in-out infinite" },
-  floatDrop3: { position:"absolute", top:"50%", right:"15%", fontSize:"1.5rem", opacity:0.1, animation:"floatDrop 3.5s ease-in-out infinite" },
-  right:      { flex:1, display:"flex", alignItems:"center", justifyContent:"center", background:"#fafafa", padding:"40px 24px" },
-  card:       { background:"#fff", borderRadius:24, padding:"48px 40px", width:"100%", maxWidth:440, boxShadow:"0 8px 48px rgba(0,0,0,0.1)", animation:"fadeUp 0.5s ease" },
-  cardTitle:  { fontSize:"1.8rem", fontWeight:900, color:"#111827", margin:"0 0 6px", letterSpacing:"-0.02em" },
-  cardSub:    { fontSize:"0.95rem", color:"#6b7280", margin:"0 0 32px" },
-  form:       { display:"flex", flexDirection:"column", gap:20 },
+  left:       { flex:1, background:"linear-gradient(145deg,#dc2626 0%,#7f1d1d 55%,#3b0a0a 100%)", display:"flex", alignItems:"center", justifyContent:"center", padding:"60px 48px", position:"relative", overflow:"hidden" },
+  leftContent:{ position:"relative", zIndex:1, maxWidth:380 },
+  brandRow:   { display:"flex", alignItems:"center", gap:10, marginBottom:36 },
+  leftHeading:{ fontSize:"2.4rem", fontWeight:900, color:"#fff", lineHeight:1.15, margin:"0 0 18px", letterSpacing:"-0.03em" },
+  leftSub:    { fontSize:"1rem", color:"rgba(255,255,255,0.72)", lineHeight:1.8, margin:"0 0 40px" },
+  leftStats:  { display:"flex", gap:28 },
+  statItem:   { display:"flex", flexDirection:"column", gap:3 },
+  statVal:    { fontSize:"1.7rem", fontWeight:900, color:"#fff", letterSpacing:"-0.02em" },
+  statLbl:    { fontSize:"0.75rem", color:"rgba(255,255,255,0.55)", fontWeight:600, textTransform:"uppercase", letterSpacing:"0.08em" },
+  right:      { flex:1, display:"flex", alignItems:"center", justifyContent:"center", background:"linear-gradient(160deg,#fafafa 0%,#fff5f5 100%)", padding:"40px 24px" },
+  card:       { background:"#fff", borderRadius:20, padding:"48px 40px", width:"100%", maxWidth:420, boxShadow:"0 20px 60px rgba(0,0,0,0.08), 0 4px 16px rgba(220,38,38,0.06)", animation:"fadeUp 0.5s ease", border:"1px solid #f1f5f9" },
+  cardTitle:  { fontSize:"1.65rem", fontWeight:900, color:"#0f172a", margin:"0 0 6px", letterSpacing:"-0.03em" },
+  cardSub:    { fontSize:"0.88rem", color:"#64748b", margin:0 },
+  form:       { display:"flex", flexDirection:"column", gap:18 },
   fieldWrap:  { display:"flex", flexDirection:"column", gap:6 },
-  label:      { fontSize:"0.85rem", fontWeight:700, color:"#374151" },
-  error:      { background:"#fef2f2", border:"1px solid #fecaca", color:"#dc2626", borderRadius:8, padding:"10px 14px", fontSize:"0.85rem", margin:0 },
-  switchText: { textAlign:"center", fontSize:"0.9rem", color:"#6b7280", marginTop:24 },
-  switchLink: { color:"#dc2626", fontWeight:700, textDecoration:"none" },
+  label:      { fontSize:"0.82rem", fontWeight:700, color:"#374151", letterSpacing:"0.02em" },
+  error:      { display:"flex", alignItems:"center", gap:8, background:"#fef2f2", border:"1px solid #fecaca", color:"#dc2626", borderRadius:10, padding:"10px 14px", fontSize:"0.85rem" },
+  divider:    { display:"flex", alignItems:"center", gap:12, margin:"20px 0 16px", color:"#cbd5e1", fontSize:"0.8rem", fontWeight:600 },
+  switchText: { textAlign:"center", fontSize:"0.88rem", color:"#64748b" },
+  switchLink: { color:"#dc2626", fontWeight:800, textDecoration:"none" },
 };

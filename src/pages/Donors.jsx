@@ -83,6 +83,7 @@ export default function Donors() {
       <Navbar />
 
       <div style={s.hero}>
+        <div style={{ position:"absolute", inset:0, backgroundImage:"linear-gradient(rgba(255,255,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.06) 1px,transparent 1px)", backgroundSize:"32px 32px", opacity:0.5 }} />
         <div style={s.heroInner}>
           <span style={s.pill}>🔍 Donor Search</span>
           <h1 style={s.heading}>Find a Blood Donor</h1>
@@ -160,19 +161,19 @@ export default function Donors() {
 }
 
 const s = {
-  hero:      { background: "linear-gradient(135deg,#dc2626,#7f1d1d)", padding: "60px 24px 80px", textAlign: "center", position: "relative" },
+  hero:      { background: "linear-gradient(145deg,#dc2626 0%,#7f1d1d 55%,#3b0a0a 100%)", padding: "64px 24px 88px", textAlign: "center", position: "relative", overflow:"hidden" },
   heroInner: { maxWidth: 600, margin: "0 auto", position: "relative", zIndex: 1 },
-  pill:      { display: "inline-block", background: "rgba(255,255,255,0.15)", border: "1.5px solid rgba(255,255,255,0.3)", color: "#fff", borderRadius: 999, padding: "6px 20px", fontSize: "0.82rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 },
-  heading:   { fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 900, color: "#fff", margin: "0 0 12px" },
-  sub:       { fontSize: "1rem", color: "rgba(255,255,255,0.75)", margin: 0, lineHeight: 1.7 },
+  pill:      { display: "inline-block", background: "rgba(255,255,255,0.12)", border: "1.5px solid rgba(255,255,255,0.25)", color: "#fff", borderRadius: 999, padding: "6px 20px", fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 16, backdropFilter:"blur(8px)" },
+  heading:   { fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 900, color: "#fff", margin: "0 0 12px", letterSpacing:"-0.03em" },
+  sub:       { fontSize: "0.95rem", color: "rgba(255,255,255,0.72)", margin: 0, lineHeight: 1.8 },
   curve:     { position: "absolute", bottom: 0, left: 0, right: 0 },
-  body:      { background: "#f9fafb", minHeight: "60vh", padding: "40px 24px" },
+  body:      { background: "linear-gradient(160deg,#fafafa 0%,#fff5f5 100%)", minHeight: "60vh", padding: "40px 24px" },
   inner:     { maxWidth: 1100, margin: "0 auto" },
-  searchBox: { display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center", background: "#fff", borderRadius: 16, padding: "16px 20px", boxShadow: "0 4px 20px rgba(0,0,0,0.07)", marginBottom: 28, border: "1.5px solid #fef2f2" },
-  input:     { flex: 2, minWidth: 160, padding: "11px 16px", borderRadius: 10, border: "1.5px solid #e5e7eb", fontSize: "0.95rem", outline: "none" },
-  select:    { flex: 1, minWidth: 140, padding: "11px 14px", borderRadius: 10, border: "1.5px solid #e5e7eb", fontSize: "0.95rem", outline: "none", background: "#fff" },
-  searchBtn: { padding: "11px 28px", borderRadius: 10, border: "none", background: "linear-gradient(135deg,#dc2626,#991b1b)", color: "#fff", fontWeight: 800, cursor: "pointer", boxShadow: "0 4px 14px rgba(220,38,38,0.3)" },
-  clearBtn:  { padding: "11px 18px", borderRadius: 10, border: "1.5px solid #e5e7eb", background: "#fff", color: "#6b7280", fontWeight: 700, cursor: "pointer" },
+  searchBox: { display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center", background: "#fff", borderRadius: 16, padding: "16px 20px", boxShadow: "0 4px 24px rgba(0,0,0,0.06)", marginBottom: 28, border: "1px solid #f1f5f9" },
+  input:     { flex: 2, minWidth: 160, padding: "11px 16px", borderRadius: 10, border: "1.5px solid #e2e8f0", fontSize: "0.9rem", outline: "none", fontFamily:"inherit" },
+  select:    { flex: 1, minWidth: 140, padding: "11px 14px", borderRadius: 10, border: "1.5px solid #e2e8f0", fontSize: "0.9rem", outline: "none", background: "#fff", fontFamily:"inherit" },
+  searchBtn: { padding: "11px 28px", borderRadius: 10, border: "none", background: "linear-gradient(135deg,#dc2626,#991b1b)", color: "#fff", fontWeight: 800, cursor: "pointer", boxShadow: "0 4px 16px rgba(220,38,38,0.35)", fontFamily:"inherit" },
+  clearBtn:  { padding: "11px 18px", borderRadius: 10, border: "1.5px solid #e2e8f0", background: "#fff", color: "#64748b", fontWeight: 700, cursor: "pointer", fontFamily:"inherit" },
   meta:      { marginBottom: 16 },
   grid:      { display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(240px,1fr))", gap: 20 },
   empty:     { textAlign: "center", padding: "60px 0" },
@@ -180,11 +181,11 @@ const s = {
 };
 
 const cs = {
-  card:       { background: "#fff", borderRadius: 14, overflow: "hidden", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", transition: "transform 0.2s, box-shadow 0.2s" },
-  top:        { padding: "18px 16px 14px", display: "flex", alignItems: "center", justifyContent: "space-between" },
-  bloodBadge: { fontSize: "1.5rem", fontWeight: 800, color: "#fff", background: "rgba(255,255,255,0.2)", borderRadius: 8, padding: "4px 12px" },
-  availBadge: { fontSize: "0.72rem", fontWeight: 600, color: "#fff", borderRadius: 999, padding: "4px 10px" },
-  body:       { padding: "16px" },
-  name:       { fontSize: "1rem", fontWeight: 700, color: "#111827", margin: "0 0 10px" },
-  row:        { display: "flex", alignItems: "center", gap: 8, fontSize: "0.85rem", color: "#4b5563", marginBottom: 6 },
+  card:       { background: "#fff", borderRadius: 16, overflow: "hidden", boxShadow: "0 4px 20px rgba(0,0,0,0.07)", transition: "transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s", border:"1px solid #f1f5f9" },
+  top:        { padding: "20px 18px 16px", display: "flex", alignItems: "center", justifyContent: "space-between", position:"relative", overflow:"hidden" },
+  bloodBadge: { fontSize: "1.4rem", fontWeight: 900, color: "#fff", background: "rgba(255,255,255,0.2)", borderRadius: 10, padding: "5px 14px", backdropFilter:"blur(4px)" },
+  availBadge: { fontSize: "0.7rem", fontWeight: 700, color: "#fff", borderRadius: 999, padding: "4px 10px", border:"1px solid rgba(255,255,255,0.2)" },
+  body:       { padding: "16px 18px" },
+  name:       { fontSize: "0.98rem", fontWeight: 800, color: "#0f172a", margin: "0 0 10px" },
+  row:        { display: "flex", alignItems: "center", gap: 8, fontSize: "0.84rem", color: "#475569", marginBottom: 6 },
 };

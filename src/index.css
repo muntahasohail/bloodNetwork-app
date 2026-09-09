@@ -1,18 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800;900&display=swap');
 
 @keyframes ping {
   0%   { box-shadow: 0 0 0 0 rgba(220,38,38,0.4); }
   100% { box-shadow: 0 0 0 10px rgba(220,38,38,0); }
 }
 
+@keyframes gradientShift {
+  0%,100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
 body {
   margin: 0;
-  font-family: 'Nunito', sans-serif;
-  font-size: 17px;
-  background: #f8fafc;
-  color: #1a1a2e;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 16px;
+  background: #fafafa;
+  color: #0f172a;
   line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {

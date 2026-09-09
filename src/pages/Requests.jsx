@@ -114,6 +114,7 @@ export default function Requests() {
 
       {/* Hero */}
       <div style={s.hero}>
+        <div style={{ position:"absolute", inset:0, backgroundImage:"linear-gradient(rgba(255,255,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.06) 1px,transparent 1px)", backgroundSize:"32px 32px", opacity:0.5 }} />
         <span style={s.pill}>🚨 Urgent Requests</span>
         <h1 style={s.heading}>Blood Requests</h1>
         <p style={s.sub}>Post an urgent request or help fulfill one. Every second counts.</p>
@@ -243,33 +244,33 @@ export default function Requests() {
 }
 
 const s = {
-  hero:      { background: "linear-gradient(135deg,#dc2626,#7f1d1d)", padding: "60px 24px 80px", textAlign: "center", position: "relative" },
-  pill:      { display: "inline-block", background: "rgba(255,255,255,0.15)", border: "1.5px solid rgba(255,255,255,0.3)", color: "#fff", borderRadius: 999, padding: "6px 20px", fontSize: "0.82rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 },
-  heading:   { fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 900, color: "#fff", margin: "0 0 12px" },
-  sub:       { fontSize: "1rem", color: "rgba(255,255,255,0.75)", margin: 0, lineHeight: 1.7 },
+  hero:      { background: "linear-gradient(145deg,#dc2626 0%,#7f1d1d 55%,#3b0a0a 100%)", padding: "64px 24px 88px", textAlign: "center", position: "relative", overflow:"hidden" },
+  pill:      { display: "inline-block", background: "rgba(255,255,255,0.12)", border: "1.5px solid rgba(255,255,255,0.25)", color: "#fff", borderRadius: 999, padding: "6px 20px", fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 16, backdropFilter:"blur(8px)" },
+  heading:   { fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 900, color: "#fff", margin: "0 0 12px", letterSpacing:"-0.03em" },
+  sub:       { fontSize: "0.95rem", color: "rgba(255,255,255,0.72)", margin: 0, lineHeight: 1.8 },
   curve:     { position: "absolute", bottom: 0, left: 0, right: 0 },
-  body:      { background: "#f9fafb", minHeight: "60vh", padding: "40px 24px" },
+  body:      { background: "linear-gradient(160deg,#fafafa 0%,#fff5f5 100%)", minHeight: "60vh", padding: "40px 24px" },
   inner:     { maxWidth: 1100, margin: "0 auto" },
-  searchBox: { display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center", background: "#fff", borderRadius: 16, padding: "16px 20px", boxShadow: "0 4px 20px rgba(0,0,0,0.07)", marginBottom: 20, border: "1.5px solid #fef2f2" },
-  input:     { flex: 2, minWidth: 160, padding: "11px 16px", borderRadius: 10, border: "1.5px solid #e5e7eb", fontSize: "0.95rem", outline: "none" },
-  select:    { flex: 1, minWidth: 140, padding: "11px 14px", borderRadius: 10, border: "1.5px solid #e5e7eb", fontSize: "0.95rem", outline: "none", background: "#fff" },
-  searchBtn: { padding: "11px 28px", borderRadius: 10, border: "none", background: "linear-gradient(135deg,#dc2626,#991b1b)", color: "#fff", fontWeight: 800, cursor: "pointer" },
-  clearBtn:  { padding: "11px 18px", borderRadius: 10, border: "1.5px solid #e5e7eb", background: "#fff", color: "#6b7280", fontWeight: 700, cursor: "pointer" },
-  postBtn:   { background: "linear-gradient(135deg,#dc2626,#991b1b)", color: "#fff", border: "none", borderRadius: 10, padding: "13px 28px", fontWeight: 800, fontSize: "0.95rem", cursor: "pointer", boxShadow: "0 4px 14px rgba(220,38,38,0.3)", marginBottom: 8 },
-  formCard:  { background: "#fff", borderRadius: 16, overflow: "hidden", boxShadow: "0 8px 32px rgba(220,38,38,0.12)", marginBottom: 24 },
+  searchBox: { display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center", background: "#fff", borderRadius: 16, padding: "16px 20px", boxShadow: "0 4px 24px rgba(0,0,0,0.06)", marginBottom: 20, border: "1px solid #f1f5f9" },
+  input:     { flex: 2, minWidth: 160, padding: "11px 16px", borderRadius: 10, border: "1.5px solid #e2e8f0", fontSize: "0.9rem", outline: "none", fontFamily:"inherit" },
+  select:    { flex: 1, minWidth: 140, padding: "11px 14px", borderRadius: 10, border: "1.5px solid #e2e8f0", fontSize: "0.9rem", outline: "none", background: "#fff", fontFamily:"inherit" },
+  searchBtn: { padding: "11px 28px", borderRadius: 10, border: "none", background: "linear-gradient(135deg,#dc2626,#991b1b)", color: "#fff", fontWeight: 800, cursor: "pointer", fontFamily:"inherit" },
+  clearBtn:  { padding: "11px 18px", borderRadius: 10, border: "1.5px solid #e2e8f0", background: "#fff", color: "#64748b", fontWeight: 700, cursor: "pointer", fontFamily:"inherit" },
+  postBtn:   { background: "linear-gradient(135deg,#dc2626,#991b1b)", color: "#fff", border: "none", borderRadius: 10, padding: "13px 28px", fontWeight: 800, fontSize: "0.9rem", cursor: "pointer", boxShadow: "0 4px 16px rgba(220,38,38,0.35)", marginBottom: 8, fontFamily:"inherit" },
+  formCard:  { background: "#fff", borderRadius: 16, overflow: "hidden", boxShadow: "0 8px 32px rgba(220,38,38,0.1)", marginBottom: 24, border:"1px solid #f1f5f9" },
   formHeader:{ background: "linear-gradient(135deg,#dc2626,#991b1b)", padding: "16px 20px", display: "flex", justifyContent: "space-between", alignItems: "center" },
-  closeBtn:  { background: "rgba(255,255,255,0.2)", border: "none", color: "#fff", borderRadius: 6, width: 28, height: 28, cursor: "pointer", fontSize: "0.9rem" },
+  closeBtn:  { background: "rgba(255,255,255,0.18)", border: "none", color: "#fff", borderRadius: 6, width: 28, height: 28, cursor: "pointer", fontSize: "0.9rem" },
   formBody:  { padding: "24px" },
   formGrid:  { display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(200px,1fr))", gap: 16 },
-  formInput: { padding: "10px 12px", borderRadius: 8, border: "1.5px solid #e5e7eb", fontSize: "0.9rem", outline: "none", width: "100%", boxSizing: "border-box" },
-  cancelBtn: { background: "#f3f4f6", border: "none", borderRadius: 8, padding: "10px 20px", fontWeight: 600, color: "#6b7280", cursor: "pointer" },
-  submitBtn: { background: "linear-gradient(135deg,#dc2626,#991b1b)", color: "#fff", border: "none", borderRadius: 8, padding: "10px 24px", fontWeight: 700, cursor: "pointer" },
+  formInput: { padding: "10px 12px", borderRadius: 8, border: "1.5px solid #e2e8f0", fontSize: "0.88rem", outline: "none", width: "100%", boxSizing: "border-box", fontFamily:"inherit" },
+  cancelBtn: { background: "#f8fafc", border: "1.5px solid #e2e8f0", borderRadius: 8, padding: "10px 20px", fontWeight: 600, color: "#64748b", cursor: "pointer", fontFamily:"inherit" },
+  submitBtn: { background: "linear-gradient(135deg,#dc2626,#991b1b)", color: "#fff", border: "none", borderRadius: 8, padding: "10px 24px", fontWeight: 700, cursor: "pointer", fontFamily:"inherit" },
   grid:      { display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(240px,1fr))", gap: 20 },
-  matchSection: { background: "linear-gradient(135deg,#fff5f5,#fef2f2)", border: "2px solid #fca5a5", borderRadius: 18, padding: "20px 20px 24px", marginBottom: 32, boxShadow: "0 8px 32px rgba(220,38,38,0.12)" },
+  matchSection: { background: "linear-gradient(135deg,#fff5f5,#fef2f2)", border: "1.5px solid #fecaca", borderRadius: 18, padding: "20px 20px 24px", marginBottom: 32, boxShadow: "0 8px 32px rgba(220,38,38,0.1)" },
   matchDot:  { width: 10, height: 10, borderRadius: "50%", background: "#dc2626", display: "inline-block", boxShadow: "0 0 0 4px rgba(220,38,38,0.2)" },
-  matchLabel:{ fontSize: "0.85rem", fontWeight: 800, color: "#dc2626", textTransform: "uppercase", letterSpacing: "0.08em" },
-  noMatch:   { textAlign: "center", background: "#fff", border: "1.5px solid #e5e7eb", borderRadius: 14, padding: "28px 20px", marginBottom: 28 },
-  secLabel:  { fontSize: "0.8rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: "#dc2626", margin: "0 0 16px" },
+  matchLabel:{ fontSize: "0.82rem", fontWeight: 800, color: "#dc2626", textTransform: "uppercase", letterSpacing: "0.08em" },
+  noMatch:   { textAlign: "center", background: "#fff", border: "1px solid #f1f5f9", borderRadius: 14, padding: "28px 20px", marginBottom: 28 },
+  secLabel:  { fontSize: "0.75rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#dc2626", margin: "0 0 16px" },
 };
 
 const cs = {

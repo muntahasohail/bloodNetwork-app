@@ -40,7 +40,7 @@ export default function Hero() {
           color: #fff;
           border-radius: 999px;
           padding: 9px 22px;
-          font-size: 0.95rem;
+          font-size: 0.78rem;
           font-weight: 700;
           letter-spacing: 0.08em;
           text-transform: uppercase;
@@ -62,7 +62,7 @@ export default function Hero() {
           animation: pulse-ring 1.4s ease-out infinite;
         }
         .hero-heading {
-          font-size: clamp(2.8rem, 7vw, 5rem);
+          font-size: 3.85rem;
           font-weight: 900;
           color: #fff;
           line-height: 1.1;

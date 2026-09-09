@@ -86,7 +86,6 @@ function Home() {
       <div className="home-grid" />
       <div style={{ position: "relative", zIndex: 1 }}>
         <Navbar />
-       
         <Hero />
         <div id="about" className="reveal-section"><About /></div>
         <div id="features" className="reveal-section"><Features /></div>
