@@ -207,6 +207,7 @@ export default function Hero() {
 const s = {
   section: {
     minHeight: "100vh",
+    paddingTop: 84,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

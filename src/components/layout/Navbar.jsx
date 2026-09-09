@@ -189,8 +189,9 @@ export default function Navbar() {
 
 const s = {
   nav: {
-    position: "absolute",
+    position: "fixed",
     top: 0,
+    left: 0,
     zIndex: 99,
     width: "100%",
     paddingTop: 4,
